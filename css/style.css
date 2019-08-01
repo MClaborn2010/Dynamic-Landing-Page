@@ -6,7 +6,8 @@
 
 body {
   font-family: "Quicksand", sans-serif;
-  background-size: cover;
+  background-position: center;
+  background-size: 100vw 100vh;
 }
 
 .container {
