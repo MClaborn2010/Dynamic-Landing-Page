@@ -37,17 +37,17 @@ function setBgGreet() {
 
   if (hour < 12) {
     // Morning
-    document.body.style.backgroundImage = "url('/img/highway.jpg')";
+    document.body.style.backgroundImage = "url('img/highway.jpg')";
     greeting.textContent = "Good Morning";
   } else if (hour < 18) {
     // Afternoon
-    document.body.style.backgroundImage = "url('/img/rainy.jpeg')";
+    document.body.style.backgroundImage = "url('img/rainy.jpeg')";
     document.body.style.backgroundSize = "cover";
     greeting.textContent = "Good Afternoon";
     document.body.style.color = "white";
   } else {
     // Evening
-    document.body.style.backgroundImage = "url('/img/night.jpg')";
+    document.body.style.backgroundImage = "url('img/night.jpg')";
     greeting.textContent = "Good Evening";
     document.body.style.color = "white";
   }
@@ -61,6 +61,16 @@ function getName() {
     name.textContent = localStorage.getItem("name");
   }
 }
+// Set Name
+function setName() {
+  if (e.type === "keypress") {
+    // Make sure enter
+    if (e.which == 13 || e.keyCode == 13) {
+    }
+  } else {
+    localStorage.setItem("name", e.target.innerText);
+  }
+}
 
 // Get Name
 function getFocus() {
@@ -70,6 +80,10 @@ function getFocus() {
     focus.textContent = localStorage.getItem("focus");
   }
 }
+
+name.addEventListener("keypress", setName);
+name.addEventListener("blur", setName);
+
 // Run
 showTime();
 setBgGreet();
