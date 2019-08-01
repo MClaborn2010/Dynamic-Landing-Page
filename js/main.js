@@ -47,13 +47,13 @@ function setBgGreet() {
     document.body.style.backgroundImage = "url('img/Rainy.jpeg')";
     document.body.style.backgroundSize = "cover";
     greeting.textContent = "Good Afternoon";
-    document.body.style.color = "white";
+    document.querySelector(".container").style.color = "white";
   } else {
     // Evening
     document.body.style.backgroundImage = "url('img/Night.jpeg')";
     document.body.style.backgroundSize = "cover";
     greeting.textContent = "Good Evening";
-    document.body.style.color = "white";
+    document.querySelector(".container").style.color = "white";
   }
 }
 

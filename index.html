@@ -8,18 +8,29 @@
       href="https://fonts.googleapis.com/css?family=Quicksand|Saira+Stencil+One&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-0c38nfCMzF8w8DBI+9nTWzApOpr1z0WuyswL4y6x/2ZTtmj/Ki5TedKeUcFusC/k"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <title>Welcome</title>
   </head>
   <body>
-    <time id="time"></time>
-    <h1>
-      <span id="greeting"></span>
-      <span id="name" contenteditable="true"></span>
-    </h1>
-    <h2>What are you doing today?</h2>
-    <h2 id="focus" contenteditable="true"></h2>
-
+    <div class="weatherContainer">
+      <i class="fas fa-cloud-sun-rain fa-2x"></i>
+      <h4>73&#176;</h4>
+    </div>
+    <div class="container">
+      <time id="time"></time>
+      <h1>
+        <span id="greeting"></span>
+        <span id="name" contenteditable="true"></span>
+      </h1>
+      <h2>What are you doing today?</h2>
+      <h2 id="focus" contenteditable="true"></h2>
+    </div>
     <script src="js/main.js"></script>
   </body>
 </html>
