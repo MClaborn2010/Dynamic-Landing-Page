@@ -4,6 +4,8 @@ const time = document.getElementById("time"),
   name = document.getElementById("name"),
   focus = document.getElementById("focus");
 
+// Options
+const showAmPm = true;
 // Show Time
 function showTime() {
   let today = new Date(),
@@ -20,7 +22,7 @@ function showTime() {
   // Output Time
   time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
     sec
-  )}`;
+  )} ${showAmPm ? amPm : ""}`;
 
   setTimeout(showTime, 1000);
 }
@@ -38,6 +40,7 @@ function setBgGreet() {
   if (hour < 12) {
     // Morning
     document.body.style.backgroundImage = "url('img/Highway.jpg')";
+    document.body.style.backgroundSize = "cover";
     greeting.textContent = "Good Morning";
   } else if (hour < 18) {
     // Afternoon
@@ -47,7 +50,8 @@ function setBgGreet() {
     document.body.style.color = "white";
   } else {
     // Evening
-    document.body.style.backgroundImage = "url('img/Night.jpg')";
+    document.body.style.backgroundImage = "url('img/Night.jpeg')";
+    document.body.style.backgroundSize = "cover";
     greeting.textContent = "Good Evening";
     document.body.style.color = "white";
   }
@@ -62,13 +66,28 @@ function getName() {
   }
 }
 // Set Name
-function setName() {
+function setName(e) {
   if (e.type === "keypress") {
     // Make sure enter
     if (e.which == 13 || e.keyCode == 13) {
+      localStorage.setItem("name", e.target.innerText);
+      name.blur();
     }
   } else {
     localStorage.setItem("name", e.target.innerText);
+  }
+}
+
+// Set Name
+function setFocus(e) {
+  if (e.type === "keypress") {
+    // Make sure enter
+    if (e.which == 13 || e.keyCode == 13) {
+      localStorage.setItem("focus", e.target.innerText);
+      focus.blur();
+    }
+  } else {
+    localStorage.setItem("focus", e.target.innerText);
   }
 }
 
@@ -83,6 +102,8 @@ function getFocus() {
 
 name.addEventListener("keypress", setName);
 name.addEventListener("blur", setName);
+focus.addEventListener("keypress", setFocus);
+focus.addEventListener("blur", setFocus);
 
 // Run
 showTime();
