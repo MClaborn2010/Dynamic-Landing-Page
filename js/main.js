@@ -100,10 +100,37 @@ function getFocus() {
   }
 }
 
+// Clear input when clicked
+function clearFocusInput() {
+  if (focus.textContent == "[Enter Focus]") {
+    focus.textContent = "";
+  }
+}
+function addFocusInput() {
+  if (focus.textContent == "") {
+    focus.textContent = "[Enter Focus]";
+  }
+}
+function addNameInput() {
+  if (name.textContent == "") {
+    name.textContent = "[Enter Name]";
+  }
+}
+
+function clearNameInput() {
+  if (name.textContent == "[Enter Name]") {
+    name.textContent = "";
+  }
+}
+
 name.addEventListener("keypress", setName);
 name.addEventListener("blur", setName);
 focus.addEventListener("keypress", setFocus);
 focus.addEventListener("blur", setFocus);
+focus.addEventListener("click", clearFocusInput);
+focus.addEventListener("blur", addFocusInput);
+name.addEventListener("blur", addNameInput);
+name.addEventListener("click", clearNameInput);
 
 // Run
 showTime();
