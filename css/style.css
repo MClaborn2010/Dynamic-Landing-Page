@@ -6,9 +6,9 @@
 
 body {
   font-family: "Roboto";
+  font-weight: 100;
   background-position: center;
   background-size: cover;
-  font-weight: 100;
 }
 
 .container {
