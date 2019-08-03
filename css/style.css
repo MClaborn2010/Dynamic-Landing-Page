@@ -21,6 +21,9 @@ body {
   color: black;
   margin: auto;
 }
+a {
+  color: white;
+}
 
 .weatherContainer {
   float: right;
@@ -30,8 +33,18 @@ body {
   flex-direction: row;
 }
 
+.weatherContainer i {
+  margin: 5px;
+  color: white;
+}
+
+.social-media {
+  align-items: center;
+  justify-items: center;
+  padding-bottom: 30px;
+}
 i {
-  margin-right: 5px;
+  margin: 0 10px;
 }
 
 #time {
