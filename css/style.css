@@ -51,4 +51,7 @@ h2 {
   #time {
     font-size: 6rem;
   }
+  .container {
+    width: 100%;
+  }
 }
