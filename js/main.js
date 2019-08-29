@@ -37,8 +37,11 @@ function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
 
-  if (hour < 12) {
+  if (hour < 6) {
     // Morning
+    document.body.style.backgroundImage = "url('img/Night.jpeg')";
+    greeting.textContent = "Good Morning";
+  } else if (hour < 12) {
     document.body.style.backgroundImage = "url('img/Highway.jpg')";
     greeting.textContent = "Good Morning";
   } else if (hour < 18) {
