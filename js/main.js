@@ -2,7 +2,9 @@
 const time = document.getElementById("time"),
   greeting = document.getElementById("greeting"),
   name = document.getElementById("name"),
-  focus = document.getElementById("focus");
+  focus = document.getElementById("focus"),
+  apiKey = "e27cce663f9ce97ec1758fe4f176cd30",
+  output = document.getElementById("output");
 
 // Options
 const showAmPm = true;
@@ -128,6 +130,54 @@ function clearNameInput() {
     name.textContent = "";
   }
 }
+
+let key = "8375fea328aa49dd3794823fd8b0a118";
+
+window.addEventListener("load", () => {
+  let long;
+  let lat;
+  let temperatureDegreee = document.querySelector("#output");
+  let temperatureSection = document.querySelector(".temperature-section");
+  let temperatureSpan = document.querySelector(".temperature-section span");
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      long = position.coords.longitude;
+      lat = position.coords.latitude;
+      const proxy = "http://cors-anywhere.herokuapp.com/";
+      const api = `${proxy}https://api.darksky.net/forecast/${key}/${lat},${long}`;
+      fetch(api)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          const { temperature, summary, icon } = data.currently;
+          // Set DOM Elements from the API
+          temperatureDegreee.textContent = Math.floor(temperature);
+          // Formula for Celsius
+          let celsius = (temperature - 32) * (5 / 9);
+          // Set Icon
+          setIcons(icon, document.querySelector(".icon"));
+
+          temperatureSection.addEventListener("click", () => {
+            if (temperatureSpan.textContent === "F") {
+              temperatureSpan.textContent = "C";
+              temperatureDegreee.textContent = Math.floor(celsius);
+            } else {
+              temperatureSpan.textContent = "F";
+              temperatureDegreee.textContent = Math.floor(temperature);
+            }
+          });
+        });
+    });
+    function setIcons(icon, iconID) {
+      const skycons = new Skycons({ color: "white" });
+      const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+      skycons.play();
+      return skycons.set(iconID, Skycons[currentIcon]);
+    }
+  }
+});
 
 name.addEventListener("keypress", setName);
 name.addEventListener("blur", setName);
