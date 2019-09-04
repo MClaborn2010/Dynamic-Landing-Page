@@ -153,21 +153,14 @@ window.addEventListener("load", () => {
         .then(data => {
           const { temperature, summary, icon } = data.currently;
           // Set DOM Elements from the API
-          temperatureDegreee.textContent = Math.floor(temperature);
+          // temperatureDegreee.textContent = Math.floor(temperature);
+          temperatureDegreee.innerHTML = `<h4>${Math.floor(
+            temperature
+          )}&#176;</h4>`;
           // Formula for Celsius
           let celsius = (temperature - 32) * (5 / 9);
           // Set Icon
           setIcons(icon, document.querySelector(".icon"));
-
-          temperatureSection.addEventListener("click", () => {
-            if (temperatureSpan.textContent === "F") {
-              temperatureSpan.textContent = "C";
-              temperatureDegreee.textContent = Math.floor(celsius);
-            } else {
-              temperatureSpan.textContent = "F";
-              temperatureDegreee.textContent = Math.floor(temperature);
-            }
-          });
         });
     });
     function setIcons(icon, iconID) {
