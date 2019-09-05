@@ -47,12 +47,13 @@ function setBgGreet() {
   }  else if (hour < 12) {
     document.body.style.backgroundImage = "url('img/Highway.jpg')";
     greeting.textContent = "Good Morning";
-    document.querySelector(".container").style.color = "black";
+    
   } else if (hour < 18) {
     // Afternoon
     document.body.style.backgroundImage = "url('img/rainy-day.jpg')";
     greeting.textContent = "Good Afternoon";
     document.querySelector(".container").style.color = "white";
+    document.querySelector(".container").style.color = "black";
   } else {
     // Evening
     document.body.style.backgroundImage = "url('img/Night.jpeg')";
