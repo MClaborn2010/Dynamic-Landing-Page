@@ -44,10 +44,7 @@ function setBgGreet() {
     document.body.style.backgroundImage = "url('img/Night.jpeg')";
     greeting.textContent = "Good Morning";
     document.querySelector(".container").style.color = "white";
-  } else if (hour < 12 || temperatureDescription.innerText === "Rainy") {
-    document.body.style.backgroundImage = "url('img/Rainy.jpeg')";
-    greeting.textContent = "Good Morning";
-  } else if (hour < 12) {
+  }  else if (hour < 12) {
     document.body.style.backgroundImage = "url('img/Highway.jpg')";
     greeting.textContent = "Good Morning";
   } else if (hour < 18) {
