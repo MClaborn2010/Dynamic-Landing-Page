@@ -83,18 +83,29 @@ function setBgGreet() {
     document.body.style.backgroundImage = "url('img/Night.jpeg')";
     greeting.textContent = "Good Morning";
     document.querySelector(".container").style.color = "white";
+<<<<<<< HEAD
   }
   if (hour < 12) {
     document.body.style.backgroundImage = "url('img/Highway.jpg')";
     greeting.textContent = "Good Morning";
     document.querySelector(".container").style.color = "black";
     document.querySelector(".temperature-section").style.color = "black";
+=======
+  }  else if (hour < 12) {
+    document.body.style.backgroundImage = "url('img/Highway.jpg')";
+    greeting.textContent = "Good Morning";
+    
+>>>>>>> 7d7c7ceb1bf15549ae605c54c076b0e9b86ed9a3
   } else if (hour < 18) {
     // Afternoon
-    document.body.style.backgroundImage = "url('img/Rainy.jpeg')";
+    document.body.style.backgroundImage = "url('img/rainy-day.jpg')";
     greeting.textContent = "Good Afternoon";
     document.querySelector(".container").style.color = "white";
+<<<<<<< HEAD
     document.querySelector(".temperature-section").style.color = "white";
+=======
+    document.querySelector(".container").style.color = "black";
+>>>>>>> 7d7c7ceb1bf15549ae605c54c076b0e9b86ed9a3
   } else {
     // Evening
     document.body.style.backgroundImage = "url('img/Night.jpeg')";
