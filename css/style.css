@@ -35,6 +35,9 @@ a {
   display: flex;
   flex-direction: row;
 }
+.temperature-description {
+  margin: 2px;
+}
 
 .temperature-section i {
   margin: 5px;

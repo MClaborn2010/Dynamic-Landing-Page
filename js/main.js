@@ -43,6 +43,10 @@ function setBgGreet() {
     // Morning
     document.body.style.backgroundImage = "url('img/Night.jpeg')";
     greeting.textContent = "Good Morning";
+    document.querySelector(".container").style.color = "white";
+  } else if (hour < 12 || temperatureDescription.innerText === "Rainy") {
+    document.body.style.backgroundImage = "url('img/Rainy.jpeg')";
+    greeting.textContent = "Good Morning";
   } else if (hour < 12) {
     document.body.style.backgroundImage = "url('img/Highway.jpg')";
     greeting.textContent = "Good Morning";
@@ -139,6 +143,9 @@ window.addEventListener("load", () => {
   let temperatureDegreee = document.querySelector("#output");
   let temperatureSection = document.querySelector(".temperature-section");
   let temperatureSpan = document.querySelector(".temperature-section span");
+  let temperatureDescription = document.querySelector(
+    ".temperature-description"
+  );
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -157,6 +164,7 @@ window.addEventListener("load", () => {
           temperatureDegreee.innerHTML = `<h4>${Math.floor(
             temperature
           )}&#176;</h4>`;
+          temperatureDescription.innerHTML = summary;
           // Formula for Celsius
           let celsius = (temperature - 32) * (5 / 9);
           // Set Icon
