@@ -5,7 +5,7 @@ const time = document.getElementById("time"),
   focus = document.getElementById("focus"),
   apiKey = "e27cce663f9ce97ec1758fe4f176cd30",
   output = document.getElementById("output");
-
+let temperatureDescription = document.querySelector(".temperature-description");
 // Options
 const showAmPm = true;
 // Show Time
@@ -33,28 +33,68 @@ function showTime() {
 function addZero(n) {
   return (parseInt(n, 10) < 10 ? "0" : "") + n;
 }
+window.addEventListener("load", () => {
+  let long;
+  let lat;
+  let temperatureDegreee = document.querySelector("#output");
+  let temperatureSection = document.querySelector(".temperature-section");
+  let temperatureSpan = document.querySelector(".temperature-section span");
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      long = position.coords.longitude;
+      lat = position.coords.latitude;
+      const proxy = "https://cors-anywhere.herokuapp.com/";
+      const api = `${proxy}https://api.darksky.net/forecast/${key}/${lat},${long}`;
+      fetch(api)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          const { temperature, summary, icon } = data.currently;
+          // Set DOM Elements from the API
+          // temperatureDegreee.textContent = Math.floor(temperature);
+          temperatureDegreee.innerHTML = `<h4>${Math.floor(
+            temperature
+          )}&#176;</h4>`;
+          temperatureDescription.innerText = summary;
+          // Formula for Celsius
+          let celsius = (temperature - 32) * (5 / 9);
+          // Set Icon
+          setIcons(icon, document.querySelector(".icon"));
+        });
+    });
+    function setIcons(icon, iconID) {
+      const skycons = new Skycons({ color: "white" });
+      const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+      skycons.play();
+      return skycons.set(iconID, Skycons[currentIcon]);
+    }
+  }
+});
 
 // Set background and greeting
 function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
 
-  if (hour < 6) {
+  if (hour < 6 || temperatureDescription) {
     // Morning
     document.body.style.backgroundImage = "url('img/Night.jpeg')";
     greeting.textContent = "Good Morning";
     document.querySelector(".container").style.color = "white";
-  } else if (hour < 12 || temperatureDescription.innerText === "Rainy") {
-    document.body.style.backgroundImage = "url('img/Rainy.jpeg')";
-    greeting.textContent = "Good Morning";
-  } else if (hour < 12) {
+  }
+  if (hour < 12) {
     document.body.style.backgroundImage = "url('img/Highway.jpg')";
     greeting.textContent = "Good Morning";
+    document.querySelector(".container").style.color = "black";
+    document.querySelector(".temperature-section").style.color = "black";
   } else if (hour < 18) {
     // Afternoon
     document.body.style.backgroundImage = "url('img/Rainy.jpeg')";
     greeting.textContent = "Good Afternoon";
     document.querySelector(".container").style.color = "white";
+    document.querySelector(".temperature-section").style.color = "white";
   } else {
     // Evening
     document.body.style.backgroundImage = "url('img/Night.jpeg')";
@@ -136,49 +176,6 @@ function clearNameInput() {
 }
 
 let key = "8375fea328aa49dd3794823fd8b0a118";
-
-window.addEventListener("load", () => {
-  let long;
-  let lat;
-  let temperatureDegreee = document.querySelector("#output");
-  let temperatureSection = document.querySelector(".temperature-section");
-  let temperatureSpan = document.querySelector(".temperature-section span");
-  let temperatureDescription = document.querySelector(
-    ".temperature-description"
-  );
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
-      long = position.coords.longitude;
-      lat = position.coords.latitude;
-      const proxy = "https://cors-anywhere.herokuapp.com/";
-      const api = `${proxy}https://api.darksky.net/forecast/${key}/${lat},${long}`;
-      fetch(api)
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          const { temperature, summary, icon } = data.currently;
-          // Set DOM Elements from the API
-          // temperatureDegreee.textContent = Math.floor(temperature);
-          temperatureDegreee.innerHTML = `<h4>${Math.floor(
-            temperature
-          )}&#176;</h4>`;
-          temperatureDescription.innerHTML = summary;
-          // Formula for Celsius
-          let celsius = (temperature - 32) * (5 / 9);
-          // Set Icon
-          setIcons(icon, document.querySelector(".icon"));
-        });
-    });
-    function setIcons(icon, iconID) {
-      const skycons = new Skycons({ color: "white" });
-      const currentIcon = icon.replace(/-/g, "_").toUpperCase();
-      skycons.play();
-      return skycons.set(iconID, Skycons[currentIcon]);
-    }
-  }
-});
 
 name.addEventListener("keypress", setName);
 name.addEventListener("blur", setName);

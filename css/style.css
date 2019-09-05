@@ -43,6 +43,9 @@ a {
   margin: 5px;
   color: white;
 }
+p {
+  font-weight: 400;
+}
 
 .social-media {
   align-items: center;
