@@ -49,7 +49,7 @@ function setBgGreet() {
     greeting.textContent = "Good Morning";
   } else if (hour < 18) {
     // Afternoon
-    document.body.style.backgroundImage = "url('img/Rainy.jpeg')";
+    document.body.style.backgroundImage = "url('img/rainy-day.jpeg')";
     greeting.textContent = "Good Afternoon";
     document.querySelector(".container").style.color = "white";
   } else {
