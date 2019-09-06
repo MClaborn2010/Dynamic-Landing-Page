@@ -74,44 +74,77 @@ window.addEventListener("load", () => {
       skycons.play();
       let today = new Date(),
         hour = today.getHours();
-
-      if (hour < 6 || temperatureDescription) {
-        // Morning
-        document.body.style.backgroundImage = "url('img/Night.jpeg')";
+      //Early Morning
+      if (hour < 6) {
+        document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
         greeting.textContent = "Good Morning";
         document.querySelector(".container").style.color = "white";
       }
-      if (hour < 12) {
-        document.body.style.backgroundImage = "url('img/Highway.jpg')";
+      // Rainy Early Morning
+      else if (hour < 6 && currentIcon === "RAIN") {
+        document.body.style.backgroundImage = "url('img/rainynight.jpg')";
+        greeting.textContent = "Good Morning";
+        document.querySelector(".container").style.color = "white";
+      }
+      // Clear Morning
+      else if (hour < 12) {
+        document.body.style.backgroundImage = "url('img/clearday.jpg')";
         greeting.textContent = "Good Morning";
         document.querySelector(".container").style.color = "black";
         document.querySelector(".temperature-section").style.color = "black";
-      } else if (hour < 18 && currentIcon === "CLEAR_DAY") {
-        // Afternoon
-        document.body.style.backgroundImage = "url('img/afternoon.jpg')";
-        greeting.textContent = "Good Afternoon";
+      }
+      // Rainy Morning
+      else if (hour < 12 && currentIcon === "RAIN") {
+        document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
+        greeting.textContent = "Good Morning";
         document.querySelector(".container").style.color = "black";
-        document.querySelector(".temperature-section").style.color = "white";
-      } else if (hour < 18 && currentIcon === "PARTLY_CLOUDY_DAY") {
-        // Afternoon
-        document.body.style.backgroundImage = "url('img/mountains.jpg')";
-        greeting.textContent = "Good Afternoon";
+        document.querySelector(".temperature-section").style.color = "black";
+      }
+      // Cloudy Morning
+      else if (
+        (hour < 12 && currentIcon === "CLOUDY") ||
+        currentIcon === "PARTLY_CLOUDY_DAY"
+      ) {
+        document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
+        greeting.textContent = "Good Morning";
         document.querySelector(".container").style.color = "black";
-        document.querySelector(".temperature-section").style.color = "white";
-      } else if (hour < 18) {
-        // Afternoon
-        document.body.style.backgroundImage = "url('img/Rainy.jpeg')";
+        document.querySelector(".temperature-section").style.color = "black";
+      }
+      // Afternoon
+      else if (hour < 18) {
+        document.body.style.backgroundImage = "url('img/clearafternoon.jpg')";
         greeting.textContent = "Good Afternoon";
         document.querySelector(".container").style.color = "white";
         document.querySelector(".temperature-section").style.color = "white";
-      } else {
-        // Evening
-        document.body.style.backgroundImage = "url('img/Night.jpeg')";
+      }
+      // Rainy Afternoon
+      else if (hour < 18 && currentIcon === "RAIN") {
+        document.body.style.backgroundImage = "url('img/rainyafternoon.jpg')";
+        greeting.textContent = "Good Afternoon";
+        document.querySelector(".container").style.color = "white";
+        document.querySelector(".temperature-section").style.color = "white";
+      }
+      // Cloudy Afternoon
+      else if (
+        (hour < 18 && currentIcon === "CLOUDY") ||
+        currentIcon === "PARTLY_CLOUDY_DAY"
+      ) {
+        document.body.style.backgroundImage = "url('img/.partlycloudydayjpg')";
+        greeting.textContent = "Good Afternoon";
+        document.querySelector(".container").style.color = "white";
+        document.querySelector(".temperature-section").style.color = "white";
+      }
+      // Rainy Night
+      else if (hour < 24 && currentIcon === "RAIN") {
+        document.body.style.backgroundImage = "url('img/rainynight.jpg')";
         greeting.textContent = "Good Evening";
         document.querySelector(".container").style.color = "white";
       }
-      if (currentIcon === "CLEAR_DAY") {
-        console.log("It worked!");
+      // Clear Night
+      else {
+        document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
+        greeting.textContent = "Good Evening";
+        document.querySelector(".container").style.color = "white";
       }
 
       return skycons.set(iconID, Skycons[currentIcon]);
