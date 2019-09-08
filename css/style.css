@@ -25,14 +25,14 @@ body {
   margin: auto;
 }
 a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
 .temperature-section {
   float: right;
   margin: 20px 20px;
-  color: white;
+  color: black;
   display: flex;
   flex-direction: row;
 }
@@ -42,7 +42,7 @@ a {
 
 .temperature-section i {
   margin: 5px;
-  color: white;
+  color: black;
 }
 p {
   font-weight: 400;
@@ -73,6 +73,9 @@ h4 {
   color: white;
 }
 
+#output {
+  color: black;
+}
 @media (max-width: 700px) {
   #time {
     font-size: 6rem;

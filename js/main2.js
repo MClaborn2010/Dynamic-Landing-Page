@@ -62,93 +62,110 @@ window.addEventListener("load", () => {
             temperature
           )}&#176;</h4>`;
           temperatureDescription.innerText = summary;
+          console.log(temperatureDescription.innerText);
           // Formula for Celsius
           let celsius = (temperature - 32) * (5 / 9);
           // Set Icon
           setIcons(icon, document.querySelector(".icon"));
         });
-    });
-    function setIcons(icon, iconID) {
-      const skycons = new Skycons({ color: "white" });
-      let currentIcon = icon.replace(/-/g, "_").toUpperCase();
-      skycons.play();
-      let today = new Date(),
-        hour = today.getHours();
-      //Early Morning
-      if (hour < 6) {
-        document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
-        greeting.textContent = "Good Morning";
-        document.querySelector(".container").style.color = "white";
-      }
-      // Rainy Early Morning
-      else if (hour < 6 && currentIcon === "RAIN") {
-        document.body.style.backgroundImage = "url('img/rainynight.jpg')";
-        greeting.textContent = "Good Morning";
-        document.querySelector(".container").style.color = "white";
-      }
-      // Clear Morning
-      else if (hour < 12) {
-        document.body.style.backgroundImage = "url('img/clearday.jpg')";
-        greeting.textContent = "Good Morning";
-        document.querySelector(".container").style.color = "black";
-        document.querySelector(".temperature-section").style.color = "black";
-      }
-      // Rainy Morning
-      else if (hour < 12 && currentIcon === "RAIN") {
-        document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
-        greeting.textContent = "Good Morning";
-        document.querySelector(".container").style.color = "black";
-        document.querySelector(".temperature-section").style.color = "black";
-      }
-      // Cloudy Morning
-      else if (
-        (hour < 12 && currentIcon === "CLOUDY") ||
-        currentIcon === "PARTLY_CLOUDY_DAY"
-      ) {
-        document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
-        greeting.textContent = "Good Morning";
-        document.querySelector(".container").style.color = "black";
-        document.querySelector(".temperature-section").style.color = "black";
-      }
-      // Afternoon
-      else if (hour < 18) {
-        document.body.style.backgroundImage = "url('img/clearafternoon.jpg')";
-        greeting.textContent = "Good Afternoon";
-        document.querySelector(".container").style.color = "white";
-        document.querySelector(".temperature-section").style.color = "white";
-      }
-      // Rainy Afternoon
-      else if (hour < 18 && currentIcon === "RAIN") {
-        document.body.style.backgroundImage = "url('img/rainyafternoon.jpg')";
-        greeting.textContent = "Good Afternoon";
-        document.querySelector(".container").style.color = "white";
-        document.querySelector(".temperature-section").style.color = "white";
-      }
-      // Cloudy Afternoon
-      else if (
-        (hour < 18 && currentIcon === "CLOUDY") ||
-        currentIcon === "PARTLY_CLOUDY_DAY"
-      ) {
-        document.body.style.backgroundImage = "url('img/.partlycloudydayjpg')";
-        greeting.textContent = "Good Afternoon";
-        document.querySelector(".container").style.color = "white";
-        document.querySelector(".temperature-section").style.color = "white";
-      }
-      // Rainy Night
-      else if (hour < 24 && currentIcon === "RAIN") {
-        document.body.style.backgroundImage = "url('img/rainynight.jpg')";
-        greeting.textContent = "Good Evening";
-        document.querySelector(".container").style.color = "white";
-      }
-      // Clear Night
-      else {
-        document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
-        greeting.textContent = "Good Evening";
-        document.querySelector(".container").style.color = "white";
-      }
+      function setIcons(icon, iconID) {
+        const skycons = new Skycons({ color: "white" });
+        let currentIcon = icon.replace(/-/g, "_").toUpperCase();
+        skycons.play();
+        let today = new Date(),
+          hour = today.getHours();
+        //Early Morning
+        if (hour < 6) {
+          document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
+          greeting.textContent = "Good Morning";
+          document.querySelector(".container").style.color = "white";
+          console.log("Clear Early Morning");
+        }
+        // Rainy Early Morning
+        else if (hour < 6 && currentIcon === "RAIN") {
+          document.body.style.backgroundImage = "url('img/rainynight.jpg')";
+          greeting.textContent = "Good Morning";
+          document.querySelector(".container").style.color = "white";
+          console.log("Rainy Early Morning");
+        }
+        // Clear Morning
+        else if (hour < 12) {
+          document.body.style.backgroundImage = "url('img/clearday.jpg')";
+          greeting.textContent = "Good Morning";
+          document.querySelector(".container").style.color = "black";
+          console.log("Clear Morning");
+        }
+        // Rainy Morning
+        else if (hour < 12 && currentIcon === "RAIN") {
+          document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
+          greeting.textContent = "Good Morning";
+          document.querySelector(".container").style.color = "black";
+          console.log("Rainy Morning");
+        }
+        // Cloudy Morning
+        else if (hour < 12 && currentIcon === "PARTLY_CLOUDY_DAY") {
+          document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
+          greeting.textContent = "Good Morning";
+          document.querySelector(".container").style.color = "black";
+          console.log("Cloudy Morning");
+        }
+        //Afternoon
+        else if (hour < 18 && temperatureDescription === "Clear") {
+          document.body.style.backgroundImage = "url('img/clearafternoon.jpg')";
+          greeting.textContent = "Good Afternoon";
+          document.querySelector(".container").style.color = "black";
+          document.querySelector(".temperature-section").style.color = "white";
+          console.log("Clear Afternoon");
+        }
 
-      return skycons.set(iconID, Skycons[currentIcon]);
-    }
+        // Rainy Afternoon
+        else if (hour < 18 && currentIcon === "RAIN") {
+          document.body.style.backgroundImage = "url('img/rainyafternoon.jpg')";
+          greeting.textContent = "Good Afternoon";
+          document.querySelector(".container").style.color = "white";
+          document.querySelector(".temperature-section").style.color = "white";
+          console.log("Rainy Afternoon");
+        }
+
+        // Cloudy Afternoon
+        else if (
+          hour < 18 &&
+          temperatureDescription.innerText === "Partly Cloudy"
+        ) {
+          document.body.style.backgroundImage =
+            "url('img/partlycloudyday.jpg')";
+          greeting.textContent = "Good Afternoon";
+          document.querySelector(".container").style.color = "white";
+          document.querySelector(".temperature-section").style.color = "white";
+          console.log("Cloudy Afternoon");
+        }
+
+        // Rainy Night
+        else if (hour < 24 && temperatureDescription.innerText === "Rain") {
+          document.body.style.backgroundImage = "url('img/rainynight.jpg')";
+          greeting.textContent = "Good Evening";
+          document.querySelector(".container").style.color = "white";
+        }
+        // Cloudy Night
+        else if (
+          (hour < 24 && temperatureDescription.innerText === "Cloudy") ||
+          temperatureDescription.innerText === "Partly Cloudy"
+        ) {
+          document.body.style.backgroundImage = "url('img/rainynight.jpg')";
+          greeting.textContent = "Good Evening";
+          document.querySelector(".container").style.color = "white";
+        }
+        // Clear Night
+        else {
+          document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
+          greeting.textContent = "Good Evening";
+          document.querySelector(".container").style.color = "white";
+          console.log(temperatureDescription.innerText);
+        }
+
+        return skycons.set(iconID, Skycons[currentIcon]);
+      }
+    });
   }
 
   // Set background and greeting
