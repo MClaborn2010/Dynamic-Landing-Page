@@ -163,6 +163,8 @@ window.addEventListener("load", () => {
           document.querySelector(".temperature-section").style.color = "white";
           console.log(temperatureDescription.innerText);
         }
+        window.document.title = greeting.innerText + " " + name.innerText;
+        console.log(greeting.innerText);
 
         return skycons.set(iconID, Skycons[currentIcon]);
       }
