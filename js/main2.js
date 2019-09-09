@@ -160,6 +160,7 @@ window.addEventListener("load", () => {
           document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
           greeting.textContent = "Good Evening";
           document.querySelector(".container").style.color = "white";
+          document.querySelector(".temperature-section").style.color = "white";
           console.log(temperatureDescription.innerText);
         }
 
