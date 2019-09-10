@@ -62,7 +62,6 @@ window.addEventListener("load", () => {
             temperature
           )}&#176;</h4>`;
           temperatureDescription.innerText = summary;
-          console.log(temperatureDescription.innerText);
           // Formula for Celsius
           let celsius = (temperature - 32) * (5 / 9);
           // Set Icon
@@ -75,18 +74,24 @@ window.addEventListener("load", () => {
         let today = new Date(),
           hour = today.getHours();
         //Early Morning
-        if (hour < 6) {
-          document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
+        if (hour < 6 && temperatureDescription.innerText === "Partly Cloudy") {
+          document.body.style.backgroundImage = "url('img/cloudy-night.jpeg')";
           greeting.textContent = "Good Morning";
           document.querySelector(".container").style.color = "white";
+          temperatureDescription.style.color = "white";
           console.log("Clear Early Morning");
         }
         // Rainy Early Morning
-        else if (hour < 6 && currentIcon === "RAIN") {
+        else if (hour < 6 && temperatureDescription.innerText === "Rain") {
           document.body.style.backgroundImage = "url('img/rainynight.jpg')";
           greeting.textContent = "Good Morning";
           document.querySelector(".container").style.color = "white";
           console.log("Rainy Early Morning");
+        } else if (hour < 6) {
+          document.body.style.backgroundImage = "url('img/clearnight.jpeg')";
+          greeting.textContent = "Good Morning";
+          document.querySelector(".container").style.color = "white";
+          console.log(temperatureDescription);
         }
         // Clear Morning
         else if (hour < 12) {
@@ -164,7 +169,6 @@ window.addEventListener("load", () => {
           console.log(temperatureDescription.innerText);
         }
         window.document.title = greeting.innerText + " " + name.innerText;
-        console.log(greeting.innerText);
 
         return skycons.set(iconID, Skycons[currentIcon]);
       }
