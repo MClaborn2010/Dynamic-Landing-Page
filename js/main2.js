@@ -114,6 +114,7 @@ window.addEventListener("load", () => {
           document.querySelector(".container").style.color = "black";
           console.log("Cloudy Morning");
         }
+
         //Afternoon
         else if (hour < 18 && temperatureDescription === "Clear") {
           document.body.style.backgroundImage = "url('img/clearafternoon.jpg')";
@@ -143,6 +144,12 @@ window.addEventListener("load", () => {
           document.querySelector(".container").style.color = "white";
           document.querySelector(".temperature-section").style.color = "white";
           console.log("Cloudy Afternoon");
+        } else if (hour < 18) {
+          document.body.style.backgroundImage = "url('img/clearafternoon.jpg')";
+          greeting.textContent = "Good Afternoon";
+          document.querySelector(".container").style.color = "black";
+          document.querySelector(".temperature-section").style.color = "white";
+          console.log("Clear Afternoon");
         }
 
         // Rainy Night
