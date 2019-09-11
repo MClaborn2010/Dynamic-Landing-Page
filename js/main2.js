@@ -130,13 +130,13 @@ window.addEventListener("load", () => {
           greeting.textContent = "Good Afternoon";
           document.querySelector(".container").style.color = "white";
           document.querySelector(".temperature-section").style.color = "white";
-          console.log("Rainy Afternoon");
+          console.log(currentIcon);
         }
 
         // Cloudy Afternoon
         else if (
-          hour < 18 &&
-          temperatureDescription.innerText === "Partly Cloudy"
+          (hour < 18 && temperatureDescription.innerText === "Partly Cloudy") ||
+          (hour < 18 && temperatureDescription.innerText === "Mostly Cloudy")
         ) {
           document.body.style.backgroundImage =
             "url('img/partlycloudyday.jpg')";
