@@ -160,12 +160,13 @@ window.addEventListener("load", () => {
         }
         // Cloudy Night
         else if (
-          (hour < 24 && temperatureDescription.innerText === "Cloudy") ||
-          temperatureDescription.innerText === "Partly Cloudy"
+          (hour < 24 && temperatureDescription.innerText === "Partly Cloudy") ||
+          (hour < 24 && temperatureDescription.innerText === "Mostly Cloudy")
         ) {
-          document.body.style.backgroundImage = "url('img/rainynight.jpg')";
+          document.body.style.backgroundImage = "url('img/cloudy-night.jpeg')";
           greeting.textContent = "Good Evening";
           document.querySelector(".container").style.color = "white";
+          document.querySelector(".temperature-section").style.color = "white";
         }
         // Clear Night
         else {
