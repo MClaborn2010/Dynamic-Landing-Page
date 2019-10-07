@@ -92,6 +92,15 @@ window.addEventListener("load", () => {
           greeting.textContent = "Good Morning";
           document.querySelector(".container").style.color = "white";
           console.log(temperatureDescription);
+        } // Rainy Morning
+        else if (
+          (hour < 12 && temperatureDescription.innerText === "Rain") ||
+          "Light Rain"
+        ) {
+          document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
+          greeting.textContent = "Good Morning";
+          document.querySelector(".container").style.color = "black";
+          console.log("Rainy Morning");
         }
         // Clear Morning
         else if (hour < 12) {
@@ -100,13 +109,7 @@ window.addEventListener("load", () => {
           document.querySelector(".container").style.color = "black";
           console.log("Clear Morning");
         }
-        // Rainy Morning
-        else if (hour < 12 && currentIcon === "RAIN") {
-          document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
-          greeting.textContent = "Good Morning";
-          document.querySelector(".container").style.color = "black";
-          console.log("Rainy Morning");
-        }
+
         // Cloudy Morning
         else if (hour < 12 && currentIcon === "PARTLY_CLOUDY_DAY") {
           document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
@@ -153,7 +156,10 @@ window.addEventListener("load", () => {
         }
 
         // Rainy Night
-        else if (hour < 24 && temperatureDescription.innerText === "Rain") {
+        else if (
+          (hour < 24 && temperatureDescription.innerText === "Rain") ||
+          currentIcon === "RAIN"
+        ) {
           document.body.style.backgroundImage = "url('img/rainynight.jpg')";
           greeting.textContent = "Good Evening";
           document.querySelector(".container").style.color = "white";
