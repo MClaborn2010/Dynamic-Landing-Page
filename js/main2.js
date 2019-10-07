@@ -99,7 +99,8 @@ window.addEventListener("load", () => {
         ) {
           document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
           greeting.textContent = "Good Morning";
-          document.querySelector(".container").style.color = "black";
+          document.querySelector(".container").style.color = "white";
+          document.querySelector(".temperature-section").style.color = "white";
           console.log("Rainy Morning");
         }
         // Clear Morning
