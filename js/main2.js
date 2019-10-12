@@ -93,10 +93,7 @@ window.addEventListener("load", () => {
           document.querySelector(".container").style.color = "white";
           console.log(temperatureDescription);
         } // Rainy Morning
-        else if (
-          (hour < 12 && temperatureDescription.innerText === "Rain") ||
-          "Light Rain"
-        ) {
+        else if (hour < 12 && temperatureDescription.innerText === "Rain") {
           document.body.style.backgroundImage = "url('img/rainymorning.jpeg')";
           greeting.textContent = "Good Morning";
           document.querySelector(".container").style.color = "white";
